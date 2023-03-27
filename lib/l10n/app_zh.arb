@@ -1,0 +1,16 @@
+{
+  "appTitle": "玩安卓",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "bottomNavHome": "首页",
+  "bottomNavAnswer": "问答",
+  "bottomNavSystem": "体系",
+  "bottomNavUser": "我的",
+  "bottomNavSettings": "设置",
+  "titleOtherView": "其他页面",
+  "systemSettings": "设置",
+  "settingsTheme": "主题",
+  "settingsLanguage": "语言",
+  "settingsFontSize": "字体大小"
+}
