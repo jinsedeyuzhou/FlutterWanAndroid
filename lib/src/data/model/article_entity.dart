@@ -85,7 +85,7 @@ class ArticleEntity extends Object {
   int selfVisible;
 
   @JsonKey(name: 'shareDate')
-  int shareDate;
+  int? shareDate;
 
   @JsonKey(name: 'shareUser')
   String shareUser;

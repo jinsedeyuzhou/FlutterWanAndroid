@@ -1,5 +1,6 @@
 import 'package:app_data/app_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_arch/flutter_arch.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,7 +26,7 @@ class _AppState extends State<App> implements RouteAware {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) => RefreshConfiguration(
-        headerBuilder: () => const ClassicHeader(),
+        headerBuilder: () => const WaterDropHeader(),
         footerBuilder: () => const ClassicFooter(),
         hideFooterWhenNotFull: true,
         headerTriggerDistance: 80,
@@ -40,7 +41,7 @@ class _AppState extends State<App> implements RouteAware {
           supportedLocales: AppLocalizations.supportedLocales,
           // theme: ThemeData(),
           theme: AppTheme.lightTheme(),
-          themeMode: SettingsService.to.themeMode,
+          themeMode: ThemeMode.light,
           darkTheme: AppTheme.darkTheme(),
           // locale: SettingsService.to.locale,
           locale: SettingsService.to.locale,
@@ -49,6 +50,7 @@ class _AppState extends State<App> implements RouteAware {
           fallbackLocale: const Locale("zh", "CN"),
           navigatorObservers: [AppPages.observer],
           debugShowCheckedModeBanner: false,
+          routingCallback: (value) {},
         ),
       ),
     );

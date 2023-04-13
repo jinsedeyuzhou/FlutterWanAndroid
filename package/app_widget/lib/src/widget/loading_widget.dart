@@ -1,3 +1,4 @@
+import 'package:app_widget/app_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -7,7 +8,9 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      height: double.infinity,
+      color: AppColors.pageBackground,
       width: double.infinity,
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),

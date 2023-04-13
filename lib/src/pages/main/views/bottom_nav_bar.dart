@@ -25,13 +25,12 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     appLocalization = AppLocalizations.of(context)!;
     theme = Theme.of(context);
-    Color selectedItemColor = theme.primaryColor;
-    Color unselectedItemColor = theme.primaryColorLight;
     List<BottomNavItem> navItems = _getNavItems();
 
     return Obx(
       () => CupertinoTabBar(
         key: bottomNavKey,
+        backgroundColor: Colors.white,
         items: navItems
             .map(
               (BottomNavItem navItem) => BottomNavigationBarItem(
@@ -49,10 +48,9 @@ class BottomNavBar extends StatelessWidget {
                   tooltip: ""),
             )
             .toList(),
-        activeColor: selectedItemColor,
-        inactiveColor: unselectedItemColor,
         currentIndex: navController.selectedIndex,
         iconSize: AppValues.iconSize_22,
+        activeColor: theme.primaryColor,
         onTap: (index) {
           navController.updateSelectedIndex(index);
           onNewMenuSelected(navItems[index].menuCode);

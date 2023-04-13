@@ -12,5 +12,21 @@
   "systemSettings": "settings",
   "settingsTheme": "Theme",
   "settingsLanguage": "Language",
-  "settingsFontSize": "FontSize"
+  "settingsFontSize": "FontSize",
+  "homeTitle": "Home",
+  "ask": "Question And Answer",
+  "system": "System",
+  "navigation": "Navigation",
+  "topArticle": "Top",
+  "newArticle": "New",
+  "viewStateMessageError": "Network Failed,Check network",
+  "viewStateButtonRetry": "Retry",
+  "viewStateButtonRefresh": "Refresh",
+  "viewStateMessageEmpty": "Nothing Found",
+  "viewStateMessageUnAuth": "Not sign in yet",
+  "viewStateButtonLogin": "Sign In",
+  "mineIntegral": "MineIntegral",
+  "mineCollect": "MineCollect",
+  "mineBookmark": "MineBookmark",
+  "readHistory": "ReadHistory"
 }

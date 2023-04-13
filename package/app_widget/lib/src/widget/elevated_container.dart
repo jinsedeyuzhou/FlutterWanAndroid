@@ -32,7 +32,7 @@ class ElevatedContainer extends StatelessWidget {
               offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
-          color: AppColors.pageBackground),
+          color: Colors.black54),
       child: child,
     );
   }

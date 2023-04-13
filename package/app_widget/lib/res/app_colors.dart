@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-abstract class AppColors {
 
+abstract class AppColors {
   /// 页面背景颜色
   static const Color scaffoldBackground = Color(0xFFFFFFFF);
-
-  /// 主要背景颜色
-  // static const Color primaryBackground = Color(0xFF5C78FF);
 
   /// 主要文本颜色
   static const Color primaryText = Color(0xFF333333);
@@ -65,22 +62,20 @@ abstract class AppColors {
   /// tabCellSeparator 单元格底部分隔条 颜色
   static const Color tabCellSeparator = Color.fromARGB(255, 230, 230, 231);
 
+  static const Color pageBackground =Color(0xFFf4f4f4);
+  static const Color statusBarColor = Colors.blue;
+  static const Color appBarColor = Colors.blue;
+  static const Color appBarBackground = Color(0xFF34A2DA);
+  static const Color appBarIconColor =textColorPrimary;
+  static const Color appBarTextColor =textColorPrimary;
 
-
-
-  static const Color pageBackground = Color(0xFFFAFBFD);
-  static const Color statusBarColor = Color(0xFF03A9F4);
-  static const Color appBarColor = Color(0xFF03A9F4);
-  static const Color appBarIconColor = Color(0xFFFFFFFF);
-  static const Color appBarTextColor = Color(0xFFFFFFFF);
-
-  static const Color centerTextColor = Colors.grey;
-  static const MaterialColor colorPrimarySwatch =  Colors.blue;
+  static const Color centerTextColor = Color(0xFF666666);
+  static const MaterialColor colorPrimarySwatch = Colors.blue;
   static const Color colorPrimary = Colors.blue;
-  static const Color colorAccent = Colors.blue;
+  static const Color colorAccent = Colors.blueAccent;
   static const Color colorLightGreen = Colors.lightBlue;
-  static const Color colorWhite = Color(0xFFFFFFFF);
-  static const Color lightGreyColor = Color(0xFFC4C4C4);
+  static const Color colorWhite = Colors.white;
+  static const Color lightGreyColor = Colors.grey;
   static const Color errorColor = Color(0xFFAB0B0B);
   static const Color colorDark = Color(0xFF323232);
 
@@ -88,15 +83,13 @@ abstract class AppColors {
   static const Color disabledButtonBgColor = Color(0xFFBFBFC0);
   static const Color defaultRippleColor = Color(0x0338686A);
 
-static const Color textSelected=Color(0x54ffffff);
-static const Color textUnSelected=Color(0x88ffffff);
-  static const Color textColorPrimary = Color(0xFF323232);
+  static const Color textColorPrimary = Color(0xFF333333);
   static const Color textColorSecondary = Color(0xFF9FA4B0);
   static const Color textColorTag = colorPrimary;
   static const Color textColorGreyLight = Color(0xFFABABAB);
   static const Color textColorGreyDark = Color(0xFF979797);
   static const Color textColorBlueGreyDark = Color(0xFF939699);
-  static const Color textColorCyan =  Colors.blue;
+  static const Color textColorCyan = Colors.blue;
   static const Color textColorWhite = Color(0xFFFFFFFF);
   static Color searchFieldTextColor = const Color(0xFF323232).withOpacity(0.5);
 

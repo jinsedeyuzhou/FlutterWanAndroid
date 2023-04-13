@@ -11,9 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   shared_preferences: ^2.0.18
+  flex_color_scheme: ^7.0.1
   equatable: ^2.0.3 # 相等辅助
   app_widget:
-   path: ../app_widget
+    path: ../app_widget
+
 
 dev_dependencies:
   flutter_test:

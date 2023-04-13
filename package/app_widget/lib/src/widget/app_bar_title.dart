@@ -12,7 +12,7 @@ class AppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: pageTitleStyle,
+      style: pageMainTitleStyle,
       textAlign: TextAlign.center,
     );
   }

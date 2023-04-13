@@ -1,108 +1,141 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'system_entity.g.dart';
+part 'navigation_entity.g.dart';
 
 
 @JsonSerializable()
-class SystemEntity extends Object {
+class NavigationEntity extends Object {
 
-  @JsonKey(name: 'author')
-  String author;
+  @JsonKey(name: 'articles')
+  List<Articles> articles;
 
-  @JsonKey(name: 'children')
-  List<Children> children;
-
-  @JsonKey(name: 'courseId')
-  int courseId;
-
-  @JsonKey(name: 'cover')
-  String cover;
-
-  @JsonKey(name: 'desc')
-  String desc;
-
-  @JsonKey(name: 'id')
-  int id;
-
-  @JsonKey(name: 'lisense')
-  String lisense;
-
-  @JsonKey(name: 'lisenseLink')
-  String lisenseLink;
+  @JsonKey(name: 'cid')
+  int cid;
 
   @JsonKey(name: 'name')
   String name;
 
-  @JsonKey(name: 'order')
-  int order;
+  NavigationEntity(this.articles,this.cid,this.name,);
 
-  @JsonKey(name: 'parentChapterId')
-  int parentChapterId;
+  factory NavigationEntity.fromJson(Map<String, dynamic> srcJson) => _$NavigationEntityFromJson(srcJson);
 
-  @JsonKey(name: 'type')
-  int type;
-
-  @JsonKey(name: 'userControlSetTop')
-  bool userControlSetTop;
-
-  @JsonKey(name: 'visible')
-  int visible;
-
-  SystemEntity(this.author,this.children,this.courseId,this.cover,this.desc,this.id,this.lisense,this.lisenseLink,this.name,this.order,this.parentChapterId,this.type,this.userControlSetTop,this.visible,);
-
-  factory SystemEntity.fromJson(Map<String, dynamic> srcJson) => _$SystemEntityFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$SystemEntityToJson(this);
+  Map<String, dynamic> toJson() => _$NavigationEntityToJson(this);
 
 }
 
 
 @JsonSerializable()
-class Children extends Object {
+class Articles extends Object {
+
+  @JsonKey(name: 'adminAdd')
+  bool adminAdd;
+
+  @JsonKey(name: 'apkLink')
+  String apkLink;
+
+  @JsonKey(name: 'audit')
+  int audit;
 
   @JsonKey(name: 'author')
   String author;
 
+  @JsonKey(name: 'canEdit')
+  bool canEdit;
+
+  @JsonKey(name: 'chapterId')
+  int chapterId;
+
+  @JsonKey(name: 'chapterName')
+  String chapterName;
+
+  @JsonKey(name: 'collect')
+  bool collect;
+
   @JsonKey(name: 'courseId')
   int courseId;
-
-  @JsonKey(name: 'cover')
-  String cover;
 
   @JsonKey(name: 'desc')
   String desc;
 
+  @JsonKey(name: 'descMd')
+  String descMd;
+
+  @JsonKey(name: 'envelopePic')
+  String envelopePic;
+
+  @JsonKey(name: 'fresh')
+  bool fresh;
+
+  @JsonKey(name: 'host')
+  String host;
+
   @JsonKey(name: 'id')
   int id;
 
-  @JsonKey(name: 'lisense')
-  String lisense;
+  @JsonKey(name: 'isAdminAdd')
+  bool isAdminAdd;
 
-  @JsonKey(name: 'lisenseLink')
-  String lisenseLink;
+  @JsonKey(name: 'link')
+  String link;
 
-  @JsonKey(name: 'name')
-  String name;
+  @JsonKey(name: 'niceDate')
+  String niceDate;
 
-  @JsonKey(name: 'order')
-  int order;
+  @JsonKey(name: 'niceShareDate')
+  String niceShareDate;
 
-  @JsonKey(name: 'parentChapterId')
-  int parentChapterId;
+  @JsonKey(name: 'origin')
+  String origin;
+
+  @JsonKey(name: 'prefix')
+  String prefix;
+
+  @JsonKey(name: 'projectLink')
+  String projectLink;
+
+  @JsonKey(name: 'publishTime')
+  int publishTime;
+
+  @JsonKey(name: 'realSuperChapterId')
+  int realSuperChapterId;
+
+  @JsonKey(name: 'route')
+  bool route;
+
+  @JsonKey(name: 'selfVisible')
+  int selfVisible;
+
+  @JsonKey(name: 'shareUser')
+  String shareUser;
+
+  @JsonKey(name: 'superChapterId')
+  int superChapterId;
+
+  @JsonKey(name: 'superChapterName')
+  String superChapterName;
+
+  @JsonKey(name: 'tags')
+  List<dynamic> tags;
+
+  @JsonKey(name: 'title')
+  String title;
 
   @JsonKey(name: 'type')
   int type;
 
-  @JsonKey(name: 'userControlSetTop')
-  bool userControlSetTop;
+  @JsonKey(name: 'userId')
+  int userId;
 
   @JsonKey(name: 'visible')
   int visible;
 
-  Children(this.author,this.courseId,this.cover,this.desc,this.id,this.lisense,this.lisenseLink,this.name,this.order,this.parentChapterId,this.type,this.userControlSetTop,this.visible,);
+  @JsonKey(name: 'zan')
+  int zan;
 
-  factory Children.fromJson(Map<String, dynamic> srcJson) => _$ChildrenFromJson(srcJson);
+  Articles(this.adminAdd,this.apkLink,this.audit,this.author,this.canEdit,this.chapterId,this.chapterName,this.collect,this.courseId,this.desc,this.descMd,this.envelopePic,this.fresh,this.host,this.id,this.isAdminAdd,this.link,this.niceDate,this.niceShareDate,this.origin,this.prefix,this.projectLink,this.publishTime,this.realSuperChapterId,this.route,this.selfVisible,this.shareUser,this.superChapterId,this.superChapterName,this.tags,this.title,this.type,this.userId,this.visible,this.zan,);
 
-  Map<String, dynamic> toJson() => _$ChildrenToJson(this);
+  factory Articles.fromJson(Map<String, dynamic> srcJson) => _$ArticlesFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$ArticlesToJson(this);
 
 }

@@ -144,10 +144,16 @@ const cardSmallTagStyle = TextStyle(
     color: AppColors.textColorGreyDark);
 
 const pageTitleStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     height: 1.15,
     color: AppColors.appBarTextColor);
+
+const pageMainTitleStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.15,
+    color: Colors.white);
 
 final pageTitleBlackStyle =
     pageTitleStyle.copyWith(color: AppColors.textColorPrimary);

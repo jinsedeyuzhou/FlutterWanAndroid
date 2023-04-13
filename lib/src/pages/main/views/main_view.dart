@@ -6,8 +6,8 @@ import 'package:flutter_news/src/pages/main/controllers/main_controller.dart';
 import 'package:flutter_news/src/pages/main/views/bottom_nav_bar.dart';
 import 'package:flutter_news/src/pages/user/views/user_view.dart';
 
+import '../../../base/keep_alive_wrapper.dart';
 import '../../system/views/system_view.dart';
-import '../model/menu_code.dart';
 
 // ignore: must_be_immutable
 class MainView extends NBaseView<MainController> {
@@ -20,15 +20,16 @@ class MainView extends NBaseView<MainController> {
 
   @override
   Widget body(BuildContext context) {
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return PageView(
-      physics: const BouncingScrollPhysics(),
       controller: controller.pageController,
+      physics: const NeverScrollableScrollPhysics(),
       onPageChanged: controller.navController.updateSelectedIndex,
       children: [
-        HomeView(),
-        AskView(),
-        SystemView(),
-        UserView(),
+        KeepAliveWrapper(child: HomeView()),
+        KeepAliveWrapper(child: AskView()),
+        KeepAliveWrapper(child: SystemView()),
+        KeepAliveWrapper(child: UserView()),
       ],
     );
   }

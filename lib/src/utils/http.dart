@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:flutter_ducafecat_news_getx/common/store/store.dart';
-import 'package:flutter_ducafecat_news_getx/common/utils/utils.dart';
-import 'package:flutter_ducafecat_news_getx/common/values/values.dart';
+import 'package:flutter_arch/flavors/build_config.dart';
+import 'package:flutter_arch/flutter_arch.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_news/src/service/auth_service.dart';
+import 'package:flutter_news/src/utils/custom_interceptors.dart';
+import 'package:flutter_news/src/widget/loading_helper.dart';
 import 'package:get/get.dart' hide FormData;
 
 /*
@@ -19,24 +21,33 @@ import 'package:get/get.dart' hide FormData;
   * https://github.com/flutterchina/dio/blob/master/migration_to_4.x.md
 */
 class HttpUtil {
-  static HttpUtil _instance = HttpUtil._internal();
-  factory HttpUtil() => _instance;
+  static final HttpUtil _instance = HttpUtil._internal();
 
+  factory HttpUtil() => _instance;
+  static const int _maxLineWidth = 90;
+  static final _prettyDioLogger = PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseBody: BuildConfig.instance.environment == Environment.DEVELOPMENT,
+      responseHeader: false,
+      error: true,
+      compact: true,
+      maxWidth: _maxLineWidth);
   late Dio dio;
-  CancelToken cancelToken = new CancelToken();
+  CancelToken cancelToken = CancelToken();
 
   HttpUtil._internal() {
     // BaseOptions、Options、RequestOptions 都可以配置参数，优先级别依次递增，且可以根据优先级别覆盖参数
-    BaseOptions options = new BaseOptions(
+    BaseOptions options = BaseOptions(
       // 请求基地址,可以包含子路径
-      baseUrl: SERVER_API_URL,
+      baseUrl: BuildConfig.instance.config.baseUrl,
 
       // baseUrl: storage.read(key: STORAGE_KEY_APIURL) ?? SERVICE_API_BASEURL,
       //连接服务器超时时间，单位是毫秒.
-      connectTimeout: 10000,
+      connectTimeout: const Duration(milliseconds: 10000),
 
       // 响应流上前后两次接受到数据的间隔，单位为毫秒。
-      receiveTimeout: 5000,
+      receiveTimeout: const Duration(milliseconds: 5000),
 
       // Http请求头.
       headers: {},
@@ -57,13 +68,17 @@ class HttpUtil {
       responseType: ResponseType.json,
     );
 
-    dio = new Dio(options);
+    dio = Dio(options);
 
     // Cookie管理
     CookieJar cookieJar = CookieJar();
     dio.interceptors.add(CookieManager(cookieJar));
 
     // 添加拦截器
+    // dio.interceptors.add(CustomInterceptors());
+    // dio.interceptors.add(LogInterceptor(responseBody: true,logPrint:LogUtil.info));
+    // dio.interceptors.add(LogInterceptor(responseBody: true,logPrint:printLong));
+    dio.interceptors.add(_prettyDioLogger);
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         // Do something before request is sent
@@ -82,7 +97,7 @@ class HttpUtil {
       },
       onError: (DioError e, handler) {
         // Do something with response error
-        Loading.dismiss();
+        LoadingHelper.dismiss();
         ErrorEntity eInfo = createErrorEntity(e);
         onError(eInfo);
         return handler.next(e); //continue
@@ -98,17 +113,15 @@ class HttpUtil {
 
   // 错误处理
   void onError(ErrorEntity eInfo) {
-    print('error.code -> ' +
-        eInfo.code.toString() +
-        ', error.message -> ' +
-        eInfo.message);
+    print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
     switch (eInfo.code) {
       case 401:
-        UserStore.to.onLogout();
-        EasyLoading.showError(eInfo.message);
+        //TODO
+        AuthService.to.logout();
+        T.show(msg: eInfo.message ?? "");
         break;
       default:
-        EasyLoading.showError('未知错误');
+        T.show(msg: '未知错误');
         break;
     }
   }
@@ -118,15 +131,13 @@ class HttpUtil {
     switch (error.type) {
       case DioErrorType.cancel:
         return ErrorEntity(code: -1, message: "请求取消");
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
         return ErrorEntity(code: -1, message: "连接超时");
       case DioErrorType.sendTimeout:
         return ErrorEntity(code: -1, message: "请求超时");
       case DioErrorType.receiveTimeout:
         return ErrorEntity(code: -1, message: "响应超时");
-      case DioErrorType.cancel:
-        return ErrorEntity(code: -1, message: "请求取消");
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         {
           try {
             int errCode =
@@ -187,8 +198,8 @@ class HttpUtil {
   /// 读取本地配置
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
-    if (Get.isRegistered<UserStore>() && UserStore.to.hasToken == true) {
-      headers['Authorization'] = 'Bearer ${UserStore.to.token}';
+    if (Get.isRegistered<AuthService>() && AuthService.to.hasToken == true) {
+      // headers['Authorization'] = 'Bearer ${AuthService.to.token}';
     }
     return headers;
   }
@@ -204,15 +215,13 @@ class HttpUtil {
     Map<String, dynamic>? queryParameters,
     Options? options,
     bool refresh = false,
-    bool noCache = !CACHE_ENABLE,
+    bool noCache = false, // 是否启动缓存
     bool list = false,
     String cacheKey = '',
     bool cacheDisk = false,
   }) async {
     Options requestOptions = options ?? Options();
-    if (requestOptions.extra == null) {
-      requestOptions.extra = Map();
-    }
+    requestOptions.extra ??= {};
     requestOptions.extra!.addAll({
       "refresh": refresh,
       "noCache": noCache,
@@ -381,7 +390,8 @@ class HttpUtil {
 // 异常处理
 class ErrorEntity implements Exception {
   int code = -1;
-  String message = "";
+  String? message = "";
+
   ErrorEntity({required this.code, required this.message});
 
   String toString() {

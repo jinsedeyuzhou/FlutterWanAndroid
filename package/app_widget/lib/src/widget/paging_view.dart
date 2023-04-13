@@ -4,10 +4,9 @@ import 'package:flutter/rendering.dart';
 import '../../res/app_values.dart';
 import 'debouncer.dart';
 
-
 ///ignore: must_be_immutable
 class PagingView extends StatelessWidget {
-  final Widget child;
+  final List<Widget> children;
   final Function() onLoadNextPage;
   final Future<void> Function()? onRefresh;
 
@@ -17,7 +16,7 @@ class PagingView extends StatelessWidget {
 
   PagingView({
     Key? key,
-    required this.child,
+    required this.children,
     required this.onLoadNextPage,
     this.onRefresh,
     this.scrollController,
@@ -57,10 +56,7 @@ class PagingView extends StatelessWidget {
     return SingleChildScrollView(
       controller: scrollController,
       child: Column(
-        children: [
-          child,
-          const SizedBox(height: AppValues.listBottomEmptySpace),
-        ],
+        children: children,
       ),
     );
   }

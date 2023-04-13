@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../res/app_colors.dart';
@@ -11,9 +12,10 @@ class Loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: ElevatedContainer(
-        padding: EdgeInsets.all(AppValues.margin),
-        child: CircularProgressIndicator(
-          color: AppColors.colorPrimary,
+        padding: EdgeInsets.all(AppValues.largeMargin),
+        child: CupertinoActivityIndicator(
+          color: AppColors.colorWhite,
+          radius: 12,
         ),
       ),
     );

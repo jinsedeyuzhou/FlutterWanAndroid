@@ -12,9 +12,8 @@ class SettingsService extends GetxService {
   /// 需要先Get.put,不然会报错
   static SettingsService get to =>
       Get.find<SettingsService>(tag: (SettingsService).toString());
-  AppState appState = const AppState();
-  ThemeMode _themeMode = ThemeMode.system;
-  final ThemeData _themeData = AppTheme.darkTheme();
+  ThemeMode _themeMode = ThemeMode.light;
+  ThemeData _themeData = AppTheme.darkTheme();
 
   final _locale = const Locale("zh", "CN").obs;
 
@@ -25,15 +24,15 @@ class SettingsService extends GetxService {
 
   ThemeData get themeData => _themeData;
 
-
   late GetStorage box;
 
   Future<SettingsService> init() async {
     await GetStorage.init();
     box = GetStorage();
     if (kDebugMode) {
-      print('$runtimeType ready!');
+      print('$runtimeType 初始化配置  ready!');
     }
+    // 选择语言
     String languageType = box.read(StorageKey.languageType) ?? "zh_CN";
     print("languageType:${box.read(StorageKey.languageType)}");
     List list = languageType.split('_');
@@ -41,26 +40,37 @@ class SettingsService extends GetxService {
       _locale.value = Locale(list[0], list[1]);
       Get.updateLocale(locale);
     }
+    // 切换ThemeMode
     print("themeModeIndex:${box.read(StorageKey.themeModeIndex)}");
     int themeModeIndex = box.read(StorageKey.themeModeIndex) ?? 0;
     _themeMode = ThemeMode.values[themeModeIndex];
     Get.changeThemeMode(themeMode);
-    // if (themeModeIndex == 2) {
-    //   _themeData = AppTheme.darkTheme(appState);
-    // } else {
-    //   _themeData = AppTheme.lightTheme(appState);
-    // }
-    print('$runtimeType end!');
+
+    //切换主题
+    int themeColorIndex = box.read(StorageKey.themeColorIndex) ?? 4;
+    _themeData = AppTheme.lightTheme(
+        state: AppState(
+            themeColor:
+                AppTheme.kThemeColorSupport.keys.toList()[themeColorIndex]));
+
+    Get.changeTheme(_themeData);
+    print('$runtimeType  初始化配置 end!');
     return this;
+  }
+
+  void changeTheme(MaterialColor materialColor) {
+    int themeColorIndex =
+        AppTheme.kThemeColorSupport.keys.toList().indexOf(materialColor);
+    box.write(StorageKey.themeColorIndex, themeColorIndex);
+    _themeData =
+        AppTheme.lightTheme(state: AppState(themeColor: materialColor));
+    Get.changeTheme(_themeData);
   }
 
   void changeThemeMode(ThemeMode mode) {
     print("$runtimeType ThemeMode:${mode.index}");
 
     /// 主题
-    // Get.changeTheme(mode.index == 1
-    //     ? AppTheme.darkTheme(appState)
-    //     : AppTheme.lightTheme(appState));
     Get.changeThemeMode(mode);
     box.write(StorageKey.themeModeIndex, mode.index);
   }

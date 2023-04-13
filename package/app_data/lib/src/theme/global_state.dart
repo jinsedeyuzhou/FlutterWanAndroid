@@ -1,4 +1,3 @@
-import 'package:app_widget/app_widget.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,7 @@ class AppState extends Equatable {
   final String fontFamily;
 
   /// [themeColor] 主题色
-  final Color themeColor;
+  final MaterialColor themeColor;
 
   /// [showBackGround] 是否显示主页背景图
   final bool showBackGround;
@@ -30,7 +29,7 @@ class AppState extends Equatable {
 
   const AppState({
     this.fontFamily = 'Roboto',
-    this.themeColor = AppColors.colorPrimary,
+    this.themeColor = Colors.blue,
     this.showBackGround = true,
     this.codeStyleIndex = 0,
     this.itemStyleIndex = 0,
