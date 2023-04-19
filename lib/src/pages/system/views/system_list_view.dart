@@ -1,11 +1,13 @@
 import 'package:app_widget/res/app_colors.dart';
 import 'package:app_widget/res/app_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news/src/base/news_base_view.dart';
 import 'package:flutter_news/src/pages/system/model/system_entity.dart';
 import 'package:flutter_news/src/pages/system/model/navigation_entity.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../routes/app_pages.dart';
+import '../../../routes/constant.dart';
 import '../controllers/system_controller.dart';
 
 class SystemListView extends GetView<SystemController> {
@@ -17,7 +19,6 @@ class SystemListView extends GetView<SystemController> {
       children: [
         Container(
           margin: const EdgeInsets.only(
-            top: AppValues.margin,
             left: AppValues.margin,
           ),
           child: Text(
@@ -36,7 +37,9 @@ class SystemListView extends GetView<SystemController> {
             crossAxisAlignment: WrapCrossAlignment.start,
             children: systemEntity.children
                 .map((e) => MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.TAB_SYSTEM_ARTICLE,arguments: systemEntity);
+                      },
                       height: 34,
                       elevation: 0,
                       padding: const EdgeInsets.only(
@@ -60,6 +63,7 @@ class SystemListView extends GetView<SystemController> {
   @override
   Widget build(Object context) {
     return Obx(() => ListView.builder(
+          padding: const EdgeInsets.only(top: 12),
           itemBuilder: (context, index) => _buildSystemItem(context, index),
           itemCount: controller.systemState.systems.length,
         ));
@@ -76,7 +80,6 @@ class NavigationListView extends GetView<SystemController> {
       children: [
         Container(
           margin: const EdgeInsets.only(
-            top: AppValues.margin,
             left: AppValues.margin,
           ),
           child: Text(
@@ -95,7 +98,13 @@ class NavigationListView extends GetView<SystemController> {
             crossAxisAlignment: WrapCrossAlignment.start,
             children: navigationEntity.articles
                 .map((e) => MaterialButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        var parameters = <String, String>{
+                          Constant.URL: e.link,
+                          Constant.TITLE: e.title
+                        };
+                        Get.toNamed(Routes.WEB, parameters: parameters);
+                      },
                       height: 34,
                       elevation: 0,
                       padding: const EdgeInsets.only(
@@ -119,6 +128,7 @@ class NavigationListView extends GetView<SystemController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => ListView.builder(
+          padding: const EdgeInsets.only(top: 12),
           itemBuilder: (context, index) => _buildSystemItem(context, index),
           itemCount: controller.navigationState.navigations.length,
         ));

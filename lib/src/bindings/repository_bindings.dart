@@ -11,13 +11,16 @@ class RepositoryBindings implements Bindings {
     Get.lazyPut<WanAndroidRepository>(
       () => WanAndroidRepositoryImpl(),
       tag: (WanAndroidRepository).toString(),
+      fenix: true
     );
 
     Get.lazyPut<IAskProvider>(
       () => AskProvider(),
+        fenix: true
     );
     Get.lazyPut<IAskRepository>(
       () => AskRepository(provider: Get.find()),
+        fenix: true
     );
   }
 }

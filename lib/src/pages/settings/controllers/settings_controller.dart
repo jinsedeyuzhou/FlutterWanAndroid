@@ -1,9 +1,8 @@
 import 'package:flutter_arch/flutter_arch.dart';
 import 'package:get/get.dart';
 
-
 class SettingsController extends BaseController {
-  final count = 0.obs;
-
-  void increment() => count.value++;
+  void back() {
+    Get.back();
+  }
 }

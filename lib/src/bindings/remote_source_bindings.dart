@@ -9,6 +9,7 @@ class RemoteSourceBindings implements Bindings {
     Get.lazyPut<WanAndroidRemoteDataSource>(
       () => WanAndroidRemoteDataSourceImpl(),
       tag: (WanAndroidRemoteDataSource).toString(),
+        fenix: true
     );
   }
 }

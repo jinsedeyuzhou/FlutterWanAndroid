@@ -53,4 +53,11 @@ class SystemController extends BaseController {
       systemState.systems.value=(response.data);
     }
   }
+
+  @override
+  void dispose() {
+     systemState.systems.close();
+     navigationState.navigations.close();
+    super.dispose();
+  }
 }

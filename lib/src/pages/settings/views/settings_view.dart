@@ -1,19 +1,27 @@
 import 'package:app_widget/app_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_font_icons/flutter_font_icons.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_news/src/base/news_base_view.dart';
 
 import '../controllers/settings_controller.dart';
 import '../widgets/item_settings_widgets.dart';
+
 class SettingsView extends NBaseView<SettingsController> {
-  late AppLocalizations appLocalization;
 
   SettingsView({super.key});
+
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    appLocalization= AppLocalizations.of(context)!;
     return CustomAppBar(
+      leading: InkWell(
+        onTap: controller.back,
+        child: const Icon(
+          Ionicons.chevron_back,
+          color: Colors.white,
+        ),
+      ),
       appBarTitleText: appLocalization.bottomNavSettings,
       isBackButtonEnabled: false,
     );
@@ -63,5 +71,4 @@ class SettingsView extends NBaseView<SettingsController> {
   void _onFontSizeItemClicked() {
     showToast('Font Size: Development in progress');
   }
-
 }

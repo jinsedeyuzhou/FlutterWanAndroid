@@ -1,36 +1,45 @@
 import 'package:flutter_arch/flutter_arch.dart';
+import 'package:get/get.dart';
 
-class UserController extends BaseController
-{
+import '../../../routes/app_pages.dart';
+import '../../../service/auth_service.dart';
 
-  void  goLogin()
-  {
-
+class UserController extends BaseController {
+  void goLogin() {
+    if (!AuthService.to.isLoggedInValue) {
+      Get.toNamed(Routes.SIGN_IN);
+    }
   }
 
-  void goIntegral()
-  {
-
+  void goIntegral() {
+    if (AuthService.to.isLoggedInValue) {
+      ToastUtil.show(msg: '开发中');
+    } else {
+      Get.toNamed(Routes.SIGN_IN);
+    }
   }
 
-  void goCollect()
-  {
-
+  void goCollect() {
+    if (AuthService.to.isLoggedInValue) {
+      ToastUtil.show(msg: '开发中');
+    } else {
+      Get.toNamed(Routes.SIGN_IN);
+    }
   }
 
-  void goBookmark()
-  {
-
+  void goBookmark() {
+    if (AuthService.to.isLoggedInValue) {
+      ToastUtil.show(msg: '开发中');
+    } else {
+      Get.toNamed(Routes.SIGN_IN);
+    }
   }
 
-  void goHistory()
-  {
-
+  void goHistory() {
+    Get.toNamed(Routes.READ_HISTORY);
   }
 
-  void goSettings()
-  {
-
+  void goSettings() {
+    Get.toNamed(Routes.SETTINGS);
   }
-
 }

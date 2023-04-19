@@ -118,10 +118,10 @@ class HttpUtil {
       case 401:
         //TODO
         AuthService.to.logout();
-        T.show(msg: eInfo.message ?? "");
+        ToastUtil.show(msg: eInfo.message ?? "");
         break;
       default:
-        T.show(msg: '未知错误');
+        ToastUtil.show(msg: '未知错误');
         break;
     }
   }

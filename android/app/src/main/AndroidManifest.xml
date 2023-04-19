@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ebrightmoon.news">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="玩安卓">
+        android:usesCleartextTraffic="true"
+        android:label="玩安卓"
+        tools:targetApi="m">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -37,5 +41,19 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.3" />
+
     </application>
+    <!-- Provide required visibility configuration for API level 30 and above -->
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
 </manifest>

@@ -84,7 +84,8 @@ abstract class AppColors {
   static const Color defaultRippleColor = Color(0x0338686A);
 
   static const Color textColorPrimary = Color(0xFF333333);
-  static const Color textColorSecondary = Color(0xFF9FA4B0);
+  static const Color textColorSecondary = Color(0xFF666666);
+  static const Color textColorThird = Color(0xFF999999);
   static const Color textColorTag = colorPrimary;
   static const Color textColorGreyLight = Color(0xFFABABAB);
   static const Color textColorGreyDark = Color(0xFF979797);

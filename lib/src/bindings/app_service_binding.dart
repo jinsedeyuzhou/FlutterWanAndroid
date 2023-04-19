@@ -3,7 +3,6 @@ import 'package:flutter_news/src/service/auth_service.dart';
 import 'package:flutter_news/src/service/storage_service.dart';
 import 'package:get/get.dart';
 import '../service/db_service.dart';
-import '../service/settings_service.dart';
 
 class AppServiceBindings extends Bindings {
   @override

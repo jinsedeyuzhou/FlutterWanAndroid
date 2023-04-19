@@ -24,9 +24,9 @@ class HomeController extends BaseController with ScrollMixin {
     initialRefresh: false,
   );
 
-   ScrollController _scrollController=ScrollController();
+  final _scrollController = ScrollController().obs;
 
-  ScrollController get scrollController => _scrollController;
+  ScrollController get scrollController => _scrollController.value;
 
   final bannerState = BannerState();
 
@@ -51,17 +51,19 @@ class HomeController extends BaseController with ScrollMixin {
     topArticleState.topArticles.close();
     articleListState.articles.close();
     _showTopBtn.close();
-    _scrollController.dispose();
+    scrollController.dispose();
+    _scrollController.close();
     super.dispose();
   }
 
   void setScrollController(ScrollController scrollController) {
     print("$runtimeType setScrollController");
-    _scrollController=scrollController;
-    _scrollController.addListener(() {
-      if ((_scrollController.offset) > _height && !showTopBtn) {
+
+    _scrollController(scrollController);
+    scrollController.addListener(() {
+      if ((scrollController.offset) > _height && !showTopBtn) {
         _showTopBtn(true);
-      } else if ((_scrollController.offset) < _height && showTopBtn) {
+      } else if ((scrollController.offset) < _height && showTopBtn) {
         _showTopBtn(false);
       }
     });
@@ -136,12 +138,8 @@ class HomeController extends BaseController with ScrollMixin {
   }
 
   @override
-  Future<void> onEndScroll() async {
-
-  }
+  Future<void> onEndScroll() async {}
 
   @override
-  Future<void> onTopScroll() async {
-
-  }
+  Future<void> onTopScroll() async {}
 }

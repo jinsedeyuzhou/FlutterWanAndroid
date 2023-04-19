@@ -1,9 +1,13 @@
+import 'package:flutter_news/src/pages/web/controllers/web_controller.dart';
 import 'package:get/get.dart';
 
-class WebBindings extends Bindings
+class WebBinding extends Bindings
 {
   @override
   void dependencies() {
+    Get.lazyPut<WebController>(
+          () => WebController(),
+    );
   }
 
 }

@@ -15,6 +15,11 @@ abstract class Routes {
   static const SIGN_IN = _Paths.SIGN_IN;
   static const SIGN_UP = _Paths.SIGN_UP;
   static const UNKNOW = _Paths.UNKNOW;
+  static const WEB = _Paths.WEB;
+  static const SCAN = _Paths.SCAN;
+  static const SEARCH = _Paths.SEARCH;
+  static const TAB_SYSTEM_ARTICLE = _Paths.TAB_SYSTEM_ARTICLE;
+  static const READ_HISTORY = _Paths.READ_HISTORY;
   static const PROJECT_DETAILS = _Paths.PROJECT_DETAILS;
 }
 
@@ -30,5 +35,10 @@ abstract class _Paths {
   static const SIGN_IN = "/login";
   static const SIGN_UP = "/register";
   static const UNKNOW = "/unknow";
+  static const WEB = "/web";
+  static const SCAN = "/scan";
+  static const SEARCH = "/search";
+  static const TAB_SYSTEM_ARTICLE = "/tab_system_article";
+  static const READ_HISTORY = "/readhistory";
   static const PROJECT_DETAILS = '/project-details';
 }

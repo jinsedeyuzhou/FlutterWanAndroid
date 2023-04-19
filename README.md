@@ -28,3 +28,7 @@ the `lib/src/localization` directory.
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
+### 打包
+flutter build apk --release --target=lib/main_prod.dart
+

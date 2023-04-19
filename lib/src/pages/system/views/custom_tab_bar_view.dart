@@ -34,7 +34,7 @@ class _CustomTabBarState extends State<CustomTabBarView>
           color: Theme.of(context).primaryColor,
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
-          height: 48+ScreenUtil().statusBarHeight,
+          height: 48 + ScreenUtil().statusBarHeight,
           child: Center(
             child: _buildTabBar(tags),
           ),
@@ -43,7 +43,7 @@ class _CustomTabBarState extends State<CustomTabBarView>
           child: SizedBox(
             width: double.infinity,
             height: double.infinity,
-            child: _buildTabBarView(),
+            child: _buildTabBarView(context),
           ),
         ),
       ],
@@ -68,12 +68,15 @@ class _CustomTabBarState extends State<CustomTabBarView>
     );
   }
 
-  _buildTabBarView() {
-    return   TabBarView(controller: _tabController, children: [
-      SystemListView(),
-      NavigationListView(),
-    ]);
-
+  _buildTabBarView(BuildContext context) {
+    return MediaQuery.removePadding(
+      removeTop: false,
+      context: context,
+      child: TabBarView(controller: _tabController, children: [
+        SystemListView(),
+        NavigationListView(),
+      ]),
+    );
   }
 
   @override

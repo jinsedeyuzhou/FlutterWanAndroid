@@ -28,5 +28,19 @@
   "mineIntegral": "我的积分",
   "mineCollect": "我的收藏",
   "mineBookmark": "我的书签",
-  "readHistory": "阅读历史"
+  "readHistory": "阅读历史",
+  "hotkey": "热门搜索",
+  "searchHistory": "历史搜索",
+  "signIn": "登录",
+  "signUp": "注册",
+  "signDes": "或使用社交网络登录",
+  "email": "邮箱",
+  "fullName": "昵称",
+  "password": "密码",
+  "forgetPassword": "忘记密码",
+  "createAccount": "创建账号",
+  "havaAccount": "我有一个账号",
+  "clearHistory": "清除"
+
+
 }

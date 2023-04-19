@@ -17,7 +17,7 @@ class ItemSettings extends StatelessWidget with BaseWidgetMixin {
 
   @override
   Widget body(BuildContext context) {
-    return Ripple(
+    return InkWell(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(AppValues.padding),
@@ -31,12 +31,12 @@ class ItemSettings extends StatelessWidget with BaseWidgetMixin {
             const SizedBox(width: AppValues.smallPadding),
             Text(title, style: settingsItemStyle),
             const Spacer(),
-            AssetImageView(
-              fileName: suffixImage,
-              color: AppColors.suffixImageColor,
-              height: AppValues.iconSize_20,
-              width: AppValues.iconSize_20,
-            ),
+            // AssetImageView(
+            //   fileName: suffixImage,
+            //   color: AppColors.suffixImageColor,
+            //   height: AppValues.iconSize_20,
+            //   width: AppValues.iconSize_20,
+            // ),
           ],
         ),
       ),

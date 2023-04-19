@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_news/src/data/model/article_entity.dart';
 import 'package:flutter_news/src/pages/home/widget/article_tag.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:html_unescape/html_unescape.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../base/news_base_widget_mixin.dart';
+import '../../../routes/app_pages.dart';
+import '../../../routes/constant.dart';
 import '../../home/widget/animated_provider.dart';
 
 class ItemAskList extends StatelessWidget with NBaseWidgetMixin {
@@ -39,8 +44,13 @@ class ItemAskList extends StatelessWidget with NBaseWidgetMixin {
           color: Colors.white,
           child: InkWell(
             onTap: onTap ??
-                () {
+                () async{
                   //TODO 详情
+                  var parameters = <String, String>{
+                    Constant.URL: article.link,
+                    Constant.TITLE: article.title
+                  };
+                  Get.toNamed(Routes.WEB, parameters: parameters);
                 },
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0),

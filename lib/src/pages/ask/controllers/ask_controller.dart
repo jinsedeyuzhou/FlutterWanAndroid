@@ -1,6 +1,7 @@
 import 'package:flutter_arch/flutter_arch.dart';
 import 'package:flutter_news/src/data/get_connect/ask_repository.dart';
 import 'package:flutter_news/src/data/remote/ask_api.dart';
+import 'package:flutter_news/src/pages/history/read_history_state.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -20,8 +21,11 @@ class AskController extends BaseController {
     initialRefresh: true,
   );
 
+  ReadHistoryState historyState=ReadHistoryState();
+
   @override
   void onInit() {
+    onRefresh();
     super.onInit();
   }
 
@@ -31,7 +35,7 @@ class AskController extends BaseController {
   int pageSize = 20;
   int total = 20;
 
-  void onRefresh() {
+  Future<void> onRefresh() async{
     curPage = 1;
     showLoading();
     fetchAskList(isRefresh: true).then((_) {
@@ -73,6 +77,7 @@ class AskController extends BaseController {
   @override
   void dispose() {
     refreshController.dispose();
+    state.questionList.close();
     super.dispose();
   }
 }

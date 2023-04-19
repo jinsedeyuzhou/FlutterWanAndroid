@@ -1,4 +1,3 @@
-import 'package:app_widget/app_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_news/src/base/news_base_view.dart';

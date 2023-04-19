@@ -112,12 +112,11 @@ class ViewStateEmptyWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const ViewStateEmptyWidget(
-      {required Key key,
+      {super.key,
       this.image,
       this.message,
       required this.buttonText,
-      required this.onPressed})
-      : super(key: key);
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

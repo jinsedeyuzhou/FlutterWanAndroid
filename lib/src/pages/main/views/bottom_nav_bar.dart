@@ -84,4 +84,5 @@ class BottomNavBar extends StatelessWidget {
           menuCode: MenuCode.USER)
     ];
   }
+
 }

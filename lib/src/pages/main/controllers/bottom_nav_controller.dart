@@ -6,4 +6,10 @@ class BottomNavController extends GetxController {
   updateSelectedIndex(int index) => _selectedIndexController(index);
 
   int get selectedIndex => _selectedIndexController.value;
+
+  @override
+  void dispose() {
+    _selectedIndexController.close();
+    super.dispose();
+  }
 }

@@ -28,5 +28,17 @@
   "mineIntegral": "MineIntegral",
   "mineCollect": "MineCollect",
   "mineBookmark": "MineBookmark",
-  "readHistory": "ReadHistory"
+  "readHistory": "ReadHistory",
+  "hotkey": "hotkey",
+  "searchHistory": "historySearch",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "signDes": "Or sign in with social networks",
+  "email": "Email",
+  "fullName": "Full Name",
+  "password": "Password",
+  "createAccount": "Create an account",
+  "forgetPassword": "Forget password",
+  "havaAccount": "I have an account",
+  "clearHistory": "clear"
 }

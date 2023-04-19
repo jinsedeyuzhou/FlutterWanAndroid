@@ -70,25 +70,23 @@ class MainController extends BaseController {
       });
     }
 
-    @override
-    void onReady() {
-      super.onReady();
-    }
+  }
+  @override
+  void onReady() {
+    super.onReady();
+  }
 
-    @override
-    void onClose() {
-      super.onClose();
-    }
+  @override
+  void onClose() {
+    super.onClose();
+  }
 
-    @override
-    void dispose() {
-      uriSub?.cancel();
-    }
-
+  @override
+  void dispose() {
+    uriSub?.cancel();
     pageController.dispose();
     super.dispose();
   }
-
   @override
   InternalFinalCallback<void> get onDelete => super.onDelete;
 

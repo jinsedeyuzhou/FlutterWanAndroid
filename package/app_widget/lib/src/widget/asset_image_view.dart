@@ -24,7 +24,7 @@ class AssetImageView extends StatelessWidget {
 
   Widget _getView() {
     String mimType = fileName.split(".").last;
-    String path = "images/$fileName";
+    String path = "assets/images/$fileName";
 
     if (mimType.isEmpty) {
       return Icon(
@@ -45,12 +45,12 @@ class AssetImageView extends StatelessWidget {
       case "png":
       case "jpg":
       case "jpeg":
+        print("$runtimeType $path");
         return Image.asset(
           path,
           height: height,
           width: width,
           color: color,
-          scale: scale,
         );
       default:
         return Icon(

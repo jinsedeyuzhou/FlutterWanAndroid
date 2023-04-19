@@ -53,6 +53,10 @@ dependencies:
   html_unescape: ^2.0.0
   card_swiper: ^2.0.4
   webview_flutter: ^4.0.7
+  url_launcher: ^6.1.10
+  image_picker: ^0.8.7+3
+  # 加密安全 SHA
+  crypto: ^3.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -84,6 +88,9 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+
   fonts:
     - family: Roboto
       fonts:
