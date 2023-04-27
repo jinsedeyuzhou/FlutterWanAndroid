@@ -43,7 +43,7 @@ Tools • Dart 2.19.3 • DevTools 2.20.1
 
 **APP 整体结构**
 
-    - flutter_arch. App架构包，可复用。
+    - flutter_arch. App架构包，可复用。一种基于provider的老的MVVM架构，一种基于GetX实现的MVVM架构 
     _ app_data。 App数据包，多个业务app共用。
     _ app_widget。 App widget包，多个业务app共用
     - app。WanAndroid 项目主体。
