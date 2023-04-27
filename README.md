@@ -79,8 +79,8 @@ Tools • Dart 2.19.3 • DevTools 2.20.1
 
 
 ### App截图
-![](doc/1.jpg) ![](doc/2.jpg)  ![](doc/3.jpg)
-![](doc/4.jpg) ![](doc/5.jpg)   ![](doc/6.jpg)
+![](doc/1.jpg) | ![](doc/2.jpg) | ![](doc/3.jpg)
+![](doc/4.jpg) | ![](doc/5.jpg) | ![](doc/6.jpg)
 
 ### 下载
 
@@ -95,7 +95,8 @@ Tools • Dart 2.19.3 • DevTools 2.20.1
 * IOS 运行源代码
 
 > 开源不易
-![](doc/money1.jpg) ![](doc/money2.png)
+
+![](doc/money1.jpg) | ![](doc/money2.png)
 
 
 ### 感谢
