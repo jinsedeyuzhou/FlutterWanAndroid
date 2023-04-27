@@ -79,10 +79,10 @@ Tools • Dart 2.19.3 • DevTools 2.20.1
 
 
 ### App截图
-<img src="doc/1.jpg"  width="300px" /> <img src="doc/2.jpg"  width="300px" />  <img src="doc/3.jpg"  width="300px" />
+<img src="doc/1.jpg"  width="260px" /> <img src="doc/2.jpg"  width="260px" />  <img src="doc/3.jpg"  width="260px" />
 
 
-<img src="doc/4.jpg"  width="300px" /> <img src="doc/5.jpg"  width="300px" /> <img src="doc/6.jpg"  width="300px" />
+<img src="doc/4.jpg"  width="260px" /> <img src="doc/5.jpg"  width="260px" /> <img src="doc/6.jpg"  width="260px" />
 
 ### 下载
 
@@ -98,7 +98,7 @@ Tools • Dart 2.19.3 • DevTools 2.20.1
 
 > 开源不易
 
-<img src="doc/money1.jpg" width="375px" />        <img src="doc/money2.png" width="375px" />
+<img src="doc/money1.jpg" width="375"  />        <img src="doc/money2.png" width="375"/>
 
 
 
