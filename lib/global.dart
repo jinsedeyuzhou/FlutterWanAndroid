@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_arch/flavors/build_config.dart';
 import 'package:flutter_arch/flavors/env_config.dart';
 import 'package:flutter_arch/flavors/environment.dart';
-import 'package:flutter_news/src/service/auth_service.dart';
-import 'package:flutter_news/src/service/db_service.dart';
 import 'package:flutter_news/src/service/settings_service.dart';
 import 'package:flutter_news/src/service/storage_service.dart';
 import 'package:flutter_news/src/widget/loading_helper.dart';

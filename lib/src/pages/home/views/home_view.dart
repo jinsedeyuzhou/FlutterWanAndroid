@@ -37,7 +37,7 @@ class HomeView extends NBaseView<HomeController> {
   Widget body(BuildContext context) {
     print("$runtimeType home");
     var bannerHeight = MediaQuery.of(context).size.width * 5 / 11;
-    controller.setScrollController(PrimaryScrollController.of(context));
+    // controller.setScrollController(PrimaryScrollController.of(context));
     return Obx(
       () => MediaQuery.removePadding(
         context: context,
@@ -47,6 +47,7 @@ class HomeView extends NBaseView<HomeController> {
           context: context,
           child: SmartRefresher(
             controller: controller.refreshController,
+            scrollController: controller.smartScrollController,
             enablePullUp: true,
             onRefresh: controller.onRefresh,
             onLoading: controller.onLoading,

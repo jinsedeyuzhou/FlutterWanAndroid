@@ -29,7 +29,7 @@ dependencies:
   fluttertoast: ^8.2.1
   sqflite: ^2.2.6
   flutter_arch:
-    path: ../flutter_arch
+    path: package/flutter_arch
   app_data:
     path: package/app_data
   app_widget:
@@ -57,6 +57,8 @@ dependencies:
   image_picker: ^0.8.7+3
   # 加密安全 SHA
   crypto: ^3.0.2
+  linked_scroll_controller: ^0.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

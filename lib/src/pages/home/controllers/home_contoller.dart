@@ -4,6 +4,7 @@ import 'package:flutter_news/src/data/model/article_entity.dart';
 import 'package:flutter_news/src/data/respository/wanandroid_repository.dart';
 import 'package:flutter_news/src/pages/home/models/article_list_state.dart';
 import 'package:get/get.dart';
+import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../data/model/base_common_response.dart';
@@ -28,6 +29,15 @@ class HomeController extends BaseController with ScrollMixin {
 
   ScrollController get scrollController => _scrollController.value;
 
+  final _smartScrollController = ScrollController().obs;
+
+  ScrollController get smartScrollController => _smartScrollController.value;
+
+  late final Function() listener;
+
+  final LinkedScrollControllerGroup _controllers =
+      LinkedScrollControllerGroup();
+
   final bannerState = BannerState();
 
   final articleListState = ArticleListState();
@@ -51,26 +61,24 @@ class HomeController extends BaseController with ScrollMixin {
     topArticleState.topArticles.close();
     articleListState.articles.close();
     _showTopBtn.close();
-    scrollController.dispose();
     _scrollController.close();
+    scrollController.dispose();
+    _smartScrollController.close();
+    smartScrollController.dispose();
     super.dispose();
   }
 
-  void setScrollController(ScrollController scrollController) {
-    print("$runtimeType setScrollController");
-
-    _scrollController(scrollController);
-    scrollController.addListener(() {
-      if ((scrollController.offset) > _height && !showTopBtn) {
-        _showTopBtn(true);
-      } else if ((scrollController.offset) < _height && showTopBtn) {
-        _showTopBtn(false);
-      }
-    });
+  void setScrollController(ScrollController scroller) {
+    // print("$runtimeType setScrollController");
+    // if (scrollController.hasClients) {
+    //   scrollController.removeListener(listener);
+    // }
+    // _scrollController(scroller);
+    // scrollController.addListener(listener);
   }
 
   void onDoubleTap() {
-    scrollController.animateTo(0,
+    _controllers.animateTo(0,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOutCubic);
   }
@@ -78,6 +86,16 @@ class HomeController extends BaseController with ScrollMixin {
   @override
   void onInit() {
     onRefresh();
+    listener = () {
+      if ((_controllers.offset) > _height && !showTopBtn) {
+        _showTopBtn(true);
+      } else if ((_controllers.offset) < _height && showTopBtn) {
+        _showTopBtn(false);
+      }
+    };
+    _scrollController(_controllers.addAndGet());
+    _smartScrollController(_controllers.addAndGet());
+    _controllers.addOffsetChangedListener(listener);
     super.onInit();
   }
 
