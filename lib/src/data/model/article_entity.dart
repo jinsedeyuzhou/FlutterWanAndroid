@@ -79,7 +79,7 @@ class ArticleEntity extends Object {
   int realSuperChapterId;
 
   @JsonKey(name: 'route')
-  bool route;
+  bool? route;
 
   @JsonKey(name: 'selfVisible')
   int selfVisible;
@@ -124,7 +124,8 @@ class ArticleEntity extends Object {
 
 
 @JsonSerializable()
-class Tags extends Object {
+class
+Tags extends Object {
 
   @JsonKey(name: 'name')
   String name;

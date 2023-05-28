@@ -100,7 +100,7 @@ class Articles extends Object {
   int realSuperChapterId;
 
   @JsonKey(name: 'route')
-  bool route;
+  bool? route;
 
   @JsonKey(name: 'selfVisible')
   int selfVisible;

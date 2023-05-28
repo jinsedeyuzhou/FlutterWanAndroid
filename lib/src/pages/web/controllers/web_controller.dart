@@ -3,6 +3,7 @@ import 'package:flutter_arch/flutter_arch.dart';
 import 'package:flutter_news/src/base/news_base_controller.dart';
 import 'package:flutter_news/src/routes/constant.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebController extends NBaseController {
@@ -51,10 +52,10 @@ class WebController extends NBaseController {
 
           },
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith('https://www.youtube.com/')) {
-              return NavigationDecision.prevent;
+            if (request.url.startsWith('https://')||request.url.startsWith('http://')) {
+              return NavigationDecision.navigate;
             }
-            return NavigationDecision.navigate;
+            return NavigationDecision.prevent;
           },
         ),
       )

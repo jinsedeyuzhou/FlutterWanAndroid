@@ -47,7 +47,7 @@ Articles _$ArticlesFromJson(Map<String, dynamic> json) => Articles(
       json['projectLink'] as String,
       json['publishTime'] as int,
       json['realSuperChapterId'] as int,
-      json['route'] as bool,
+      json['route'] as bool?,
       json['selfVisible'] as int,
       json['shareUser'] as String,
       json['superChapterId'] as int,

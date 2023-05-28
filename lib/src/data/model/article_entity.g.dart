@@ -32,7 +32,7 @@ ArticleEntity _$ArticleEntityFromJson(Map<String, dynamic> json) =>
       json['projectLink'] as String,
       json['publishTime'] as int,
       json['realSuperChapterId'] as int,
-      json['route'] as bool,
+      json['route'] as bool?,
       json['selfVisible'] as int,
       json['shareDate'] as int?,
       json['shareUser'] as String,
